@@ -1,0 +1,16 @@
+﻿<Window x:Class="fre_librarysystem.MainUserUI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:fre_librarysystem"
+        mc:Ignorable="d"
+        Title="Librarysystem - Books" Height="339.866" Width="625.048">
+    <Grid>
+        <DataGrid x:Name="dtagrdBooks" HorizontalAlignment="Left" Height="220" Margin="10,67,0,0" VerticalAlignment="Top" Width="581"/>
+        <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="10,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="501"/>
+        <Label x:Name="lblSearch" Content="Search for book name, ISBN, author, publisher:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="258"/>
+        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="516,39,0,0" VerticalAlignment="Top" Width="75" Height="23"/>
+
+    </Grid>
+</Window>
