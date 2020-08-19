@@ -28,8 +28,8 @@ namespace fre_librarysystem
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             ControllerLogin C_ControllerLogin = new ControllerLogin();
+            var user = C_ControllerLogin.loginUser();
 
-            C_ControllerLogin.loginUser();
         }
     }
 }

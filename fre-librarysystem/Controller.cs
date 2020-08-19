@@ -9,43 +9,44 @@ namespace fre_librarysystem
 {
     class ControllerLogin
     {
-        public void loginUser ()
+        public List<ModelObjCustomer> loginUser ()
         {
-            try
+            // Try / Catch ??
+
+            string dbHost = "LOCALHOST";
+            string databaseName = "Librarysystem";
+
+            // Connection string
+            DataContext dbLibrarysystem = new DataContext("Server=" + dbHost + "\\SQLEXPRESS;Database=" + databaseName + ";Connection timeout=30;Integrated Security=True");
+
+            Table<ModelMapping.tblCustomer> tblCustomerGet = dbLibrarysystem.GetTable<ModelMapping.tblCustomer>();
+
+            var returnList = new List<ModelObjCustomer>();
+
+            //Auswerten der typisierten Liste
+            var tblCustomerValues =
+                            from my_val in tblCustomerGet
+                            select my_val;
+
+            foreach (var value in tblCustomerValues)
             {
-                string dbHost = "LOCALHOST";
-                string databaseName = "Librarysystem";
+                var customer = new ModelObjCustomer(value.Username,value.Password,value.Surname,value.Last_name,value.Address,value.ZIP,value.City);
+                returnList.Add(customer);
+            }
 
-                // Connection string
-                DataContext dbLibrarysystem = new DataContext("Server=" + dbHost + "\\SQLEXPRESS;Database=" + databaseName + ";Connection timeout=30;Integrated Security=True");
-
-                ModelCustomer Customer = new ModelCustomer();
-                Table<ModelCustomer.tblCustomer> my_inhalt = dbLibrarysystem.GetTable<ModelCustomer.tblCustomer>();
-
-                //Auswerten der typisierten Liste
-                var eintraege =
-                                from my_i in my_inhalt
-                                select my_i;
+            return returnList;
                 
-                /*
-                string result = "";
+            /*
+            string result = "";
 
-                //Ausgabe
-                foreach (var i in eintraege)
-                {
-                    result += i.Befund;
-                }
-
-                return result;*/
-            }
-
-            catch (Exception ex)
+            //Ausgabe
+            foreach (var i in eintraege)
             {
-                //Schief gelaufen
-                //MessageBox.Show(ex.Message);
-
-                //return ex.Message;
+                result += i.Befund;
             }
+
+            return result;*/
+
         }   
     }
 }

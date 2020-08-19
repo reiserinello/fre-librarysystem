@@ -8,13 +8,8 @@ using System.Threading.Tasks;
 
 namespace fre_librarysystem
 {
-    public class ModelCustomer
+    public class ModelMapping
     {
-
-        public ModelCustomer ()
-        {
-
-        }
 
         // Mappingclass Customer
         [Table(Name = "Customer")]
@@ -43,6 +38,28 @@ namespace fre_librarysystem
             public int ZIP;
             [Column]
             public string City;
+        }
+    }
+
+    class ModelObjCustomer
+    {
+        public string username { get; }
+        public string password { get; }
+        public string surname { get; }
+        public string last_name { get; }
+        public string adress { get; }
+        public int zip { get; }
+        public string city { get; }
+
+        public ModelObjCustomer(string t_username, string t_password, string t_surname, string t_last_name, string t_adress, int t_zip, string t_city)
+        {
+            username = t_username;
+            password = t_password;
+            surname = t_surname;
+            last_name = t_last_name;
+            adress = t_adress;
+            zip = t_zip;
+            city = t_city;
         }
     }
 }
