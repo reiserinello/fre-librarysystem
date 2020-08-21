@@ -9,7 +9,7 @@ namespace fre_librarysystem
 {
     class ControllerLogin
     {
-        public List<ModelObjCustomer> loginUser ()
+        public List<ModelObjCustomer> loginUser (string t_username)
         {
             // Try / Catch ??
 
@@ -26,27 +26,16 @@ namespace fre_librarysystem
             //Auswerten der typisierten Liste
             var tblCustomerValues =
                             from my_val in tblCustomerGet
+                            where my_val.Username == t_username
                             select my_val;
 
             foreach (var value in tblCustomerValues)
             {
-                var customer = new ModelObjCustomer(value.Username,value.Password,value.Surname,value.Last_name,value.Address,value.ZIP,value.City);
+                var customer = new ModelObjCustomer(value.Username,value.Password,value.Surname,value.Last_name,value.Address,value.ZIP,value.City,value.Write,value.Write_rent);
                 returnList.Add(customer);
             }
 
             return returnList;
-                
-            /*
-            string result = "";
-
-            //Ausgabe
-            foreach (var i in eintraege)
-            {
-                result += i.Befund;
-            }
-
-            return result;*/
-
         }   
     }
 }

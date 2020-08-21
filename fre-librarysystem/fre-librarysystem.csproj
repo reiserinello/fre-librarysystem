@@ -56,6 +56,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="MainAdminUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainUserUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -69,6 +73,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controller.cs" />
+    <Compile Include="MainAdminUI.xaml.cs">
+      <DependentUpon>MainAdminUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainUserUI.xaml.cs">
       <DependentUpon>MainUserUI.xaml</DependentUpon>
     </Compile>

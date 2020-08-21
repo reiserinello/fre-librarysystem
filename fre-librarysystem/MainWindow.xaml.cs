@@ -28,8 +28,35 @@ namespace fre_librarysystem
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             ControllerLogin C_ControllerLogin = new ControllerLogin();
-            var user = C_ControllerLogin.loginUser();
+            string mypass = pwdPassword.Password;
+            var user = C_ControllerLogin.loginUser(txtUsername.Text);
 
+            // If user exists
+            if (user != null)
+            {
+                // If password is correct
+                if (pwdPassword.Password == user[0].password)
+                {
+                    if (user[0].write == false && user[0].write_rent == false)
+                    {
+                        // UserUI
+                        MainUserUI newMainUserUI = new MainUserUI();
+                        newMainUserUI.Show();
+                    } else
+                    {
+                        // AdminUI
+                        MainAdminUI newMainAdminUI = new MainAdminUI();
+                        newMainAdminUI.Show();
+                    }
+                    
+                } else
+                {
+                    MessageBox.Show("Password is not correct", "Invalide credentials", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+            } else
+            {
+                MessageBox.Show("User does not exist", "Invalide credntials", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
     }
 }

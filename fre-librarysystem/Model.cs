@@ -38,6 +38,10 @@ namespace fre_librarysystem
             public int ZIP;
             [Column]
             public string City;
+            [Column]
+            public bool Write;
+            [Column]
+            public bool Write_rent;
         }
     }
 
@@ -50,8 +54,10 @@ namespace fre_librarysystem
         public string adress { get; }
         public int zip { get; }
         public string city { get; }
+        public bool write { get; }
+        public bool write_rent { get; }
 
-        public ModelObjCustomer(string t_username, string t_password, string t_surname, string t_last_name, string t_adress, int t_zip, string t_city)
+        public ModelObjCustomer(string t_username, string t_password, string t_surname, string t_last_name, string t_adress, int t_zip, string t_city, bool t_write, bool t_write_rent)
         {
             username = t_username;
             password = t_password;
@@ -60,6 +66,8 @@ namespace fre_librarysystem
             adress = t_adress;
             zip = t_zip;
             city = t_city;
+            write = t_write;
+            write_rent = t_write_rent;
         }
     }
 }
