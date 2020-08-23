@@ -43,6 +43,29 @@ namespace fre_librarysystem
             [Column]
             public bool Write_rent;
         }
+
+        // Mappingclass Book
+        [Table(Name = "Book")]
+        public class tblBook
+        {
+            //Mapper on primary key
+            [Column(Name = "PKey", IsDbGenerated = true, IsPrimaryKey = true)]
+            public int PKey_1
+            {
+                get;
+                set;
+            }
+
+            //Mapper on field names (table properties)
+            [Column]
+            public string Name;
+            [Column]
+            public string ISBN;
+            [Column]
+            public string Author;
+            [Column]
+            public string Publisher;
+        }
     }
 
     class ModelObjCustomer
@@ -68,6 +91,22 @@ namespace fre_librarysystem
             city = t_city;
             write = t_write;
             write_rent = t_write_rent;
+        }
+    }
+
+    class ModelObjBook
+    {
+        public string name { get; }
+        public string isbn { get; }
+        public string author { get; }
+        public string publisher { get; }
+
+        public ModelObjBook(string t_name, string t_isbn, string t_author, string t_publisher)
+        {
+            name = t_name;
+            isbn = t_isbn;
+            author = t_author;
+            publisher = t_publisher;
         }
     }
 }

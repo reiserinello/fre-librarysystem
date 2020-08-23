@@ -22,6 +22,12 @@ namespace fre_librarysystem
         public MainUserUI()
         {
             InitializeComponent();
+
+            ControllerBook C_ControllerBook = new ControllerBook();
+
+            var books = C_ControllerBook.getBooks("All");
+
+            dtagrdBooks.ItemsSource = books;
         }
     }
 }
