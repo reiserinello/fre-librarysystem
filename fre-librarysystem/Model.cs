@@ -11,9 +11,9 @@ namespace fre_librarysystem
     public class ModelMapping
     {
 
-        // Mappingclass Customer
-        [Table(Name = "Customer")]
-        public class tblCustomer
+        // Mappingclass User
+        [Table(Name = "User")]
+        public class tblUser
         {
             //Mapper on primary key
             [Column(Name = "PKey", IsDbGenerated = true, IsPrimaryKey = true)]
@@ -33,7 +33,7 @@ namespace fre_librarysystem
             [Column]
             public string Last_name;
             [Column]
-            public string Address;
+            public string Adress;
             [Column]
             public int ZIP;
             [Column]
@@ -68,7 +68,7 @@ namespace fre_librarysystem
         }
     }
 
-    class ModelObjCustomer
+    class ModelObjUser
     {
         public string username { get; }
         public string password { get; }
@@ -80,7 +80,7 @@ namespace fre_librarysystem
         public bool write { get; }
         public bool write_rent { get; }
 
-        public ModelObjCustomer(string t_username, string t_password, string t_surname, string t_last_name, string t_adress, int t_zip, string t_city, bool t_write, bool t_write_rent)
+        public ModelObjUser(string t_username, string t_password, string t_surname, string t_last_name, string t_adress, int t_zip, string t_city, bool t_write, bool t_write_rent)
         {
             username = t_username;
             password = t_password;

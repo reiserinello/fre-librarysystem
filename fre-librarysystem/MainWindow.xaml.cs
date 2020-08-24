@@ -48,6 +48,8 @@ namespace fre_librarysystem
                         MainAdminUI newMainAdminUI = new MainAdminUI();
                         newMainAdminUI.Show();
                     }
+
+                    this.Close();
                     
                 } else
                 {

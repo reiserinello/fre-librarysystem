@@ -29,5 +29,16 @@ namespace fre_librarysystem
 
             dtagrdBooks.ItemsSource = books;
         }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string searchString = txtSearch.Text;
+
+            ControllerBook C_ControllerBook = new ControllerBook();
+
+            var filteredBooks = C_ControllerBook.getBooks(searchString);
+
+            dtagrdBooks.ItemsSource = filteredBooks;
+        }
     }
 }

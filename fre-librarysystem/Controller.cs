@@ -9,7 +9,7 @@ namespace fre_librarysystem
 {
     class ControllerLogin
     {
-        public List<ModelObjCustomer> loginUser (string t_username)
+        public List<ModelObjUser> loginUser (string t_username)
         {
             // Try / Catch ??
 
@@ -19,20 +19,20 @@ namespace fre_librarysystem
             // Connection string
             DataContext dbLibrarysystem = new DataContext("Server=" + dbHost + "\\SQLEXPRESS;Database=" + databaseName + ";Connection timeout=30;Integrated Security=True");
 
-            Table<ModelMapping.tblCustomer> tblCustomerGet = dbLibrarysystem.GetTable<ModelMapping.tblCustomer>();
+            Table<ModelMapping.tblUser> tblUserGet = dbLibrarysystem.GetTable<ModelMapping.tblUser>();
 
-            var returnList = new List<ModelObjCustomer>();
+            var returnList = new List<ModelObjUser>();
 
             //Auswerten der typisierten Liste
-            var tblCustomerValues =
-                            from my_val in tblCustomerGet
+            var tblUserValues =
+                            from my_val in tblUserGet
                             where my_val.Username == t_username
                             select my_val;
 
-            foreach (var value in tblCustomerValues)
+            foreach (var value in tblUserValues)
             {
-                var customer = new ModelObjCustomer(value.Username,value.Password,value.Surname,value.Last_name,value.Address,value.ZIP,value.City,value.Write,value.Write_rent);
-                returnList.Add(customer);
+                var user = new ModelObjUser(value.Username,value.Password,value.Surname,value.Last_name,value.Adress,value.ZIP,value.City,value.Write,value.Write_rent);
+                returnList.Add(user);
             }
 
             return returnList;
@@ -53,12 +53,14 @@ namespace fre_librarysystem
             Table<ModelMapping.tblBook> tblBookGet = dbLibrarysystem.GetTable<ModelMapping.tblBook>();
 
             var returnList = new List<ModelObjBook>();
+            var returnListFinal = new List<ModelObjBook>();
 
             //Auswerten der typisierten Liste
             var tblBookValues =
                         from my_val in tblBookGet
                         select my_val;
 
+            /*
             if (t_name != "All")
             {
                 tblBookValues =
@@ -66,6 +68,7 @@ namespace fre_librarysystem
                         where my_val.Name == t_name || my_val.ISBN == t_name || my_val.Author == t_name || my_val.Publisher == t_name
                         select my_val;
             }
+            */
             
             foreach (var value in tblBookValues)
             {
@@ -73,7 +76,22 @@ namespace fre_librarysystem
                 returnList.Add(book);
             }
 
-            return returnList;
+            if (t_name != "All")
+            {
+                foreach (var value in returnList)
+                {
+                    if (value.name == t_name || value.isbn == t_name || value.author == t_name || value.publisher == t_name)
+                    {
+                        var book = new ModelObjBook(value.name, value.isbn, value.author, value.publisher);
+                        returnListFinal.Add(book);
+                    }
+                }
+
+                return returnListFinal;
+            } else
+            {
+                return returnList;
+            }
         }
     }
 }
