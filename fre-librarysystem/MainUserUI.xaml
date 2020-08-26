@@ -7,11 +7,11 @@
         mc:Ignorable="d"
         Title="Librarysystem - Books" Height="356.113" Width="610.69">
     <Grid>
-        <DataGrid x:Name="dtagrdBooks" HorizontalAlignment="Left" Height="220" Margin="10,67,0,0" VerticalAlignment="Top" Width="581"/>
+        <DataGrid x:Name="dtagrdBooks" HorizontalAlignment="Left" Height="220" Margin="10,67,0,0" VerticalAlignment="Top" Width="581" SelectionChanged="dtagrdBooks_SelectionChanged"/>
         <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="10,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="501"/>
         <Label x:Name="lblSearch" Content="Search for book name, ISBN, author, publisher:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="258"/>
         <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="516,39,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btnSearch_Click"/>
-        <Button x:Name="btnReserve" Content="Reserve" HorizontalAlignment="Left" Margin="516,292,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False"/>
+        <Button x:Name="btnReserve" Content="Reserve" HorizontalAlignment="Left" Margin="516,292,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btnReserve_Click"/>
 
     </Grid>
 </Window>

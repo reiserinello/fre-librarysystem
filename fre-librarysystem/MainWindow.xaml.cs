@@ -29,7 +29,7 @@ namespace fre_librarysystem
         {
             ControllerLogin C_ControllerLogin = new ControllerLogin();
             string mypass = pwdPassword.Password;
-            var user = C_ControllerLogin.loginUser(txtUsername.Text);
+            var user = C_ControllerLogin.getUser(txtUsername.Text);
 
             // If user exists
             if (user != null)
@@ -40,7 +40,7 @@ namespace fre_librarysystem
                     if (user[0].write == false && user[0].write_rent == false)
                     {
                         // UserUI
-                        MainUserUI newMainUserUI = new MainUserUI();
+                        MainUserUI newMainUserUI = new MainUserUI(user[0].username);
                         newMainUserUI.Show();
                     } else
                     {
